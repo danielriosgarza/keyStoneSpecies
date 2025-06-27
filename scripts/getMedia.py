@@ -49,6 +49,30 @@ exchanges.pop('EX_o2(e)')
 metabolites = list(exchanges.keys())
 
 
-environments = np.random.dirichlet(np.ones(len(metabolites)))*10
+environments = np.random.dirichlet(np.ones(len(metabolites)), size=NUM_SAMPLES) * 1000
 
+
+# Append water and oxygen to metabolites and their names
+full_ids = metabolites + ['EX_h2o(e)', 'EX_o2(e)']
+full_names = [exchanges[mid] for mid in metabolites] + ['Water', 'Oxygen']
+
+# Add water and oxygen to each sample
+media_with_fixed = [list(env) + [WATER_V, OXYGEN_V] for env in environments]
+
+# Write TSV
+output_path = os.path.join(os.getcwd(), "media.tsv")
+with open(output_path, 'w', newline='') as f:
+    writer = csv.writer(f, delimiter='\t')
+
+    # First row: metabolite IDs
+    writer.writerow(["sample"] + full_ids)
+
+    # Second row: metabolite names
+    writer.writerow([""] + full_names)
+
+    # Data rows: media samples
+    for i, row in enumerate(media_with_fixed):
+        writer.writerow([f"sample_{i+1}"] + row)
+
+print(f"Wrote {NUM_SAMPLES} media compositions to {output_path}")
 
