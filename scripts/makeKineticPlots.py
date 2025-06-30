@@ -98,18 +98,18 @@ def plot_kinetics_grid(kinetics, filePath=None, n_cols=4, subplot_size=3.5, titl
     fig.text(0.06, 0.5, 'Biomass', va='center', rotation='vertical', fontsize=25)
 
     # Global legend below subplots
-    handles, labels = axes[0,0].get_legend_handles_labels()
-    fig.legend(handles, labels,
-               loc='lower center',
-               fontsize=25,
-               ncol=min(len(labels), 6),
-               bbox_to_anchor=(0.53, 0.03))
+    #handles, labels = axes[0,0].get_legend_handles_labels()
+    #fig.legend(handles, labels,
+    #           loc='lower center',
+    #           fontsize=25,
+    #           ncol=min(len(labels), 6),
+    #           bbox_to_anchor=(0.53, 0.03))
 
     # Explicit subplot spacing
-    plt.subplots_adjust(left=0.12, right=0.98, top=0.97, bottom=0.06, hspace=0.2, wspace=0.2)
+    plt.subplots_adjust(left=0.12, right=0.98, top=0.97, bottom=0.1, hspace=0.2, wspace=0.2)
 
     if filePath:
-        plt.savefig(filePath, dpi=600, bbox_inches='tight')
+        plt.savefig(filePath, dpi=450, bbox_inches='tight')
 
     plt.show()
 
@@ -140,4 +140,4 @@ for i in range(12):
 
 # plot_kinetics_grid(kinetics, n_cols=5, filePath=os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', '100_envs.png'))
 
-plot_kinetics_grid(kinetics, n_cols=12, filePath=os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', 'mock.svg'))
+plot_kinetics_grid(kinetics, n_cols=12, filePath=os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', 'mock.png'))
