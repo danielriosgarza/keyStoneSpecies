@@ -45,7 +45,6 @@ def avoid_zero_met(states, changes):
 def get_growth(model,
                env_ids,
                env_state,
-               sol0,
                monod_c=MONOD_CONSTANT,
                biomassName='biomass345'):
     uptake_bounds = {
@@ -79,10 +78,7 @@ def simulate(models_orig,
              feed_medium=None):
 
     n_models = len(models_orig)
-    base_models = [m.copy() for m in models_orig]
-
-    base_models_applied_env = [apply_env(m, env_initial) for m in base_models]
-    sol0s = [max(m.objective_value, 1) for m in base_models_applied_env]
+    
 
     # Default feed is the initial environment
     feed_medium = feed_medium or env_initial
@@ -99,10 +95,9 @@ def simulate(models_orig,
         d_mets = np.zeros_like(mets)
 
         for i in range(n_models):
-            mu, fluxes = get_growth(base_models[i], 
+            mu, fluxes = get_growth(models_orig[i], 
                                     env_ids, 
                                     env_state, 
-                                    sol0s[i],
                                     monod_c = monod_c,
                                     biomassName=biomassNames[i])
             d_bio[i] = mu * biomasses[i]

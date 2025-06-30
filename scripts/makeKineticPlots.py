@@ -88,7 +88,7 @@ def plot_kinetics_grid(kinetics, filePath=None, n_cols=4, subplot_size=3.5, titl
 
             for i, label in enumerate(labels):
                 color = distinguishable_colors[i % len(distinguishable_colors)]
-                ax.plot(time, data[i], label=label, lw=2, color=color)
+                ax.plot(time, data[i], label=label, lw=4, color=color)
 
             ax.tick_params(axis='both', labelsize=12)
             idx += 1
@@ -124,10 +124,10 @@ rootPath = os.path.join(Path(os.getcwd()).parents[0], 'files', '100_env_all_mode
 kinetics = {}
 counter = 0
 
-for i in range(11):
+for i in range(12):
     
 
-    for i in range(1,26):
+    for i in range(1,16):
         kinetics[counter] = {}
         kinetics[counter]['time'],kinetics[counter]['data'], kinetics[counter]['bac'] = loadBacterialKinetics(os.path.join(rootPath, str(i) + '.tsv'))
         counter+=1
@@ -140,4 +140,4 @@ for i in range(11):
 
 # plot_kinetics_grid(kinetics, n_cols=5, filePath=os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', '100_envs.png'))
 
-plot_kinetics_grid(kinetics, n_cols=11)
+plot_kinetics_grid(kinetics, n_cols=12, filePath=os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', 'mock.svg'))
