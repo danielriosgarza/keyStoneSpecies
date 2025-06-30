@@ -97,7 +97,7 @@ def store_simulation_to_tsv(filepath,
 model_folder = os.path.join(Path(os.getcwd()).parents[0], 'AgoraModels', 'Akkermansia')
 
 
-for env_num in range(1,26):    
+for env_num in range(20,26):    
     env, env_names, env_ids = load_media_sample(env_num)
     
     
