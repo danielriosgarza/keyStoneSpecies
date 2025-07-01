@@ -18,9 +18,14 @@ from aquarel import load_theme
 theme = load_theme("boxy_light")
 theme.apply()
 
-def loadBacterialKinetics(filePath):
+def loadBacterialKinetics(filePath, ko = None):
     TIME_POINTS = 100
+    
     BACTERIA_N = 11
+    
+    if ko is not None:
+        BACTERIA_N = 10
+    
     time = np.zeros(TIME_POINTS)
     
     with open(filePath) as f:
@@ -32,7 +37,17 @@ def loadBacterialKinetics(filePath):
             time[counter] = float(a[0])
             data[counter] = np.array(a[1:BACTERIA_N + 1]).astype(np.float32)
             counter+=1
-    return time, data.T, bacteria
+    
+    data = data.T 
+    if ko is not None:
+        bac = list(ko.keys())[0]
+        bac_idx = ko[bac]
+        zero_trace = np.zeros(TIME_POINTS)
+        data = np.insert(data, bac_idx, zero_trace, axis=0)
+        bacteria.insert(bac_idx, bac)
+
+        
+    return time, data, bacteria
         
 
 
@@ -118,19 +133,38 @@ def plot_kinetics_grid(kinetics, filePath=None, n_cols=4, subplot_size=3.5, titl
 
 
 
+cases = ['100_env_all_models',
+         'akkermansia',
+         'anaerostipes',
+         'BacteroidesFragilis',
+         'BacteroidesTheta',
+         'Bifidobacterium',
+         'Blautia',
+         'Clostridum',
+         'Faecalibacterium',
+         'Lactobacillus',
+         'Prevotella',
+         'Roseburia']
+
+
+
+
 
 rootPath = os.path.join(Path(os.getcwd()).parents[0], 'files', '100_env_all_models')
 
 kinetics = {}
-counter = 0
+counter = -1
 
-for i in range(12):
-    
-
+for case_idx, cas in enumerate(cases):
     for i in range(1,16):
-        kinetics[counter] = {}
-        kinetics[counter]['time'],kinetics[counter]['data'], kinetics[counter]['bac'] = loadBacterialKinetics(os.path.join(rootPath, str(i) + '.tsv'))
+        rootPath = os.path.join(Path(os.getcwd()).parents[0], 'files', cas)
         counter+=1
+        kinetics[counter] = {}
+        if cas == '100_env_all_models':
+            kinetics[counter]['time'],kinetics[counter]['data'], kinetics[counter]['bac'] = loadBacterialKinetics(os.path.join(rootPath, str(i) + '.tsv'))
+        else:
+            kinetics[counter]['time'],kinetics[counter]['data'], kinetics[counter]['bac'] = loadBacterialKinetics(os.path.join(rootPath, str(i) + '.tsv'), ko = {cas:case_idx-1})
+            
 
 
 # for i in range(1,25):

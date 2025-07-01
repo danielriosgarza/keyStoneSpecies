@@ -14,6 +14,13 @@ from scipy.spatial.distance import braycurtis
 
 from scipy.spatial.distance import cosine
 
+from aquarel import load_theme
+
+
+theme = load_theme("boxy_light")
+theme.apply()
+
+
 def loadKinetics(filePath):
     TIME_POINTS = 100
     time = np.zeros(TIME_POINTS)
@@ -56,7 +63,7 @@ def getTransformedDict(folder, max_v = 16):
 
 
 
-def compareTransformedDict(dict_1, dict_2, threshold = 0.1):
+def compareTransformedDict(dict_1, dict_2, threshold = 0.05):
     'always make the leave one out the second one'
     v1, v2 = [],[]
     
@@ -85,22 +92,50 @@ akkermansia_dict = getTransformedDict('akkermansia')
 
 anaerostipes_dict = getTransformedDict('anaerostipes')
 
+bacteroidesfragilis_dict = getTransformedDict('BacteroidesFragilis')
+
+bacteroidestheta_dict = getTransformedDict('BacteroidesTheta')
+
+bifidobacterium_dict = getTransformedDict('Bifidobacterium')
+
+blautia_dict = getTransformedDict('Blautia')
+
+clostridum_dict = getTransformedDict('Clostridum')
+
 faecalibacterium_dict = getTransformedDict('Faecalibacterium')
 
 lactobacillus_dict = getTransformedDict('Lactobacillus')
 
+prevotella_dict = getTransformedDict('Prevotella' )
 
-blautia_dict = getTransformedDict('Blautia', max_v = 10)
+roseburia_dict = getTransformedDict('Roseburia')
+
+
+
 
 akkermansia_bc = [compareTransformedDict(all_transformed_dict[i], akkermansia_dict[i]) for i in range(15)]
 
+
 anaerostipes_bc = [compareTransformedDict(all_transformed_dict[i], anaerostipes_dict[i]) for i in range(15)]
+
+bacteroidesfragilis_bc = [compareTransformedDict(all_transformed_dict[i], bacteroidesfragilis_dict[i]) for i in range(15)]
+
+bacteroidestheta_bc = [compareTransformedDict(all_transformed_dict[i], bacteroidestheta_dict[i]) for i in range(15)]
+
+bifidobacterium_bc = [compareTransformedDict(all_transformed_dict[i], bifidobacterium_dict[i]) for i in range(15)]
+
+blautia_bc = [compareTransformedDict(all_transformed_dict[i], blautia_dict[i]) for i in range(15)]
+
+clostridum_bc = [compareTransformedDict(all_transformed_dict[i], clostridum_dict[i]) for i in range(15)]
 
 faecalibacterium_bc = [compareTransformedDict(all_transformed_dict[i], faecalibacterium_dict[i]) for i in range(15)]
 
 lactobacillus_bc = [compareTransformedDict(all_transformed_dict[i], lactobacillus_dict[i]) for i in range(15)]
 
-blautia_bc = [compareTransformedDict(all_transformed_dict[i], blautia_dict[i]) for i in range(9)]
+prevotella_bc = [compareTransformedDict(all_transformed_dict[i], prevotella_dict[i]) for i in range(15)]
+
+roseburia_bc = [compareTransformedDict(all_transformed_dict[i], roseburia_dict[i]) for i in range(15)]
+
 
 
 import matplotlib.pyplot as plt
@@ -111,19 +146,79 @@ import pandas as pd
 df = pd.DataFrame({
     'Akkermansia': akkermansia_bc,
     'Anaerostipes': anaerostipes_bc,
-    'Blautia': blautia_bc + [np.nan]*(15-9),  # pad with NaN to align length
+    'BacteroidesFragilis': bacteroidesfragilis_bc,
+    'BacteroidesTheta': bacteroidestheta_bc,
+    'Bifidobacterium' : bifidobacterium_bc,
+    'Blautia': blautia_bc,
+    'Clostridium': clostridum_bc,
     'Faecalibacterium':faecalibacterium_bc,
-    'Lactobacillus': lactobacillus_bc
+    'Lactobacillus': lactobacillus_bc,
+    'Prevotella' : prevotella_bc,
+    'Roseburia' : roseburia_bc
 })
 
 # Melt the DataFrame to long format for seaborn
 df_melted = df.melt(var_name='Species', value_name='Bray-Curtis Distance')
 
-# Make the violin plot
-plt.figure(figsize=(6, 4))
-sns.boxplot(data=df_melted, x='Species', y='Bray-Curtis Distance')
-sns.swarmplot(data=df_melted, x='Species', y='Bray-Curtis Distance', color='k', alpha=0.5, size=3)
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
 
-plt.title('Bray-Curtis Dissimilarities by Species Removed')
+# Define custom colors
+custom_colors = [
+    '#000000',  # Black
+    '#E69F00',  # Orange
+    '#56B4E9',  # Sky Blue
+    '#009E73',  # Bluish Green
+    '#F0E442',  # Yellow
+    '#0072B2',  # Blue
+    '#D55E00',  # Vermilion
+    '#CC79A7',  # Reddish Purple
+    '#8B4513',  # Saddle Brown
+    '#32CD32',  # Lime Green
+    '#FF1493'   # Deep Pink
+]
+
+plt.figure(figsize=(12, 4.5))
+
+ax = sns.boxplot(
+    data=df_melted, x='Species', y='Bray-Curtis Distance',
+    showcaps=True,
+    boxprops=dict(facecolor='white', edgecolor='black', linewidth=2),
+    whiskerprops=dict(linewidth=2),
+    capprops=dict(linewidth=2),
+    medianprops=dict(color='black', linewidth=2),
+    flierprops=dict(marker='o', markersize=5, linestyle='none')
+)
+
+# Apply custom box facecolors
+for i, patch in enumerate(ax.patches[:len(custom_colors)]):
+    patch.set_facecolor(custom_colors[i])
+    #patch.set_alpha(0)
+    patch.set_edgecolor('black')
+    patch.set_linewidth(2)
+
+# Overlay swarm points
+sns.swarmplot(
+    data=df_melted, x='Species', y='Bray-Curtis Distance',
+    color='k', size=5
+)
+
+# Hide x-axis labels
+ax.set_xticklabels([''] * len(df.columns), rotation=45)
+ax.tick_params(axis='y', labelsize=16)
+
+# Remove axis labels
+ax.set_xlabel('')
+ax.set_ylabel('')
+
+# Optional: also remove axis label padding (if needed)
+ax.xaxis.labelpad = 0
+ax.yaxis.labelpad = 0
+
+#plt.title('Bray-Curtis Dissimilarities by Species Removed', fontsize=12)
 plt.tight_layout()
+plt.grid(axis='y', linestyle='--', linewidth=0.5, alpha=0.6)
+plt.savefig(os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', 'braycurtis.png'), transparent =True, dpi =600)
 plt.show()
+
