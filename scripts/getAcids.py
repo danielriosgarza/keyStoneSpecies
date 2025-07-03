@@ -445,3 +445,254 @@ colors = [
 
 # Plot it
 plot_acid_concentrations(acid_name=acid, all_values=all_lactate, knockout_dict=knockouts, custom_colors=colors)
+
+
+#co2#############
+
+ACID = 'co2+'
+all_co2 = getAcid('100_env_all_models', acid = ACID)
+akkermansia_co2 = getAcid('akkermansia', acid = ACID)
+anaerostipes_co2 = getAcid('anaerostipes', acid = ACID)
+bacteroidesFragilis_co2 = getAcid('BacteroidesFragilis', acid = ACID)
+bacteroidesTheta_co2 = getAcid('BacteroidesTheta', acid = ACID)
+bifidobacterium_co2 = getAcid('Bifidobacterium', acid = ACID)
+blautia_co2 = getAcid('Blautia', acid = ACID)
+clostridum_co2 = getAcid('Clostridum', acid = ACID)
+faecalibacterium_co2 = getAcid('Faecalibacterium', acid = ACID)
+lactobacillus_co2 = getAcid('Lactobacillus', acid = ACID)
+prevotella_co2 = getAcid('Prevotella', acid = ACID)
+roseburia_co2 = getAcid('Roseburia', acid = ACID)
+
+acid = 'co2'
+
+knockouts = {
+    'Akkermansia': akkermansia_co2,
+    'Anaerostipes': anaerostipes_co2,
+    'BacteroidesFragilis': bacteroidesFragilis_co2,
+    'BacteroidesTheta': bacteroidesTheta_co2,
+    'Bifidobacterium': bifidobacterium_co2,
+    'Blautia': blautia_co2,
+    'Clostridium': clostridum_co2,
+    'Faecalibacterium': faecalibacterium_co2,
+    'Lactobacillus': lactobacillus_co2,
+    'Prevotella': prevotella_co2 ,
+    'Roseburia': roseburia_co2 ,
+}
+
+colors = [
+    '#A9A9A9',  # Gray for full
+    '#000000',  # Black
+    '#E69F00',  # Orange
+    '#56B4E9',  # Sky Blue
+    '#009E73',  # Bluish Green
+    '#F0E442',  # Yellow
+    '#0072B2',  # Blue
+    '#D55E00',  # Vermilion
+    '#CC79A7',  # Reddish Purple
+    '#8B4513',  # Saddle Brown
+    '#32CD32',  # Lime Green
+    '#FF1493'   # Deep Pink
+]
+
+plot_acid_concentrations(acid_name=ACID, all_values=all_co2, knockout_dict=knockouts, custom_colors=colors)
+
+#carbon_dioxide#############
+
+ACID = 'carbon dioxide'
+all_carbon_dioxide = getAcid('100_env_all_models', acid = ACID)
+akkermansia_carbon_dioxide = getAcid('akkermansia', acid = ACID)
+anaerostipes_carbon_dioxide = getAcid('anaerostipes', acid = ACID)
+bacteroidesFragilis_carbon_dioxide = getAcid('BacteroidesFragilis', acid = ACID)
+bacteroidesTheta_carbon_dioxide = getAcid('BacteroidesTheta', acid = ACID)
+bifidobacterium_carbon_dioxide = getAcid('Bifidobacterium', acid = ACID)
+blautia_carbon_dioxide = getAcid('Blautia', acid = ACID)
+clostridum_carbon_dioxide = getAcid('Clostridum', acid = ACID)
+faecalibacterium_carbon_dioxide = getAcid('Faecalibacterium', acid = ACID)
+lactobacillus_carbon_dioxide = getAcid('Lactobacillus', acid = ACID)
+prevotella_carbon_dioxide = getAcid('Prevotella', acid = ACID)
+roseburia_carbon_dioxide = getAcid('Roseburia', acid = ACID)
+
+acid = 'carbon_dioxide'
+
+knockouts = {
+    'Akkermansia': akkermansia_carbon_dioxide,
+    'Anaerostipes': anaerostipes_carbon_dioxide,
+    'BacteroidesFragilis': bacteroidesFragilis_carbon_dioxide,
+    'BacteroidesTheta': bacteroidesTheta_carbon_dioxide,
+    'Bifidobacterium': bifidobacterium_carbon_dioxide,
+    'Blautia': blautia_carbon_dioxide,
+    'Clostridium': clostridum_carbon_dioxide,
+    'Faecalibacterium': faecalibacterium_carbon_dioxide,
+    'Lactobacillus': lactobacillus_carbon_dioxide,
+    'Prevotella': prevotella_carbon_dioxide ,
+    'Roseburia': roseburia_carbon_dioxide ,
+}
+
+colors = [
+    '#A9A9A9',  # Gray for full
+    '#000000',  # Black
+    '#E69F00',  # Orange
+    '#56B4E9',  # Sky Blue
+    '#009E73',  # Bluish Green
+    '#F0E442',  # Yellow
+    '#0072B2',  # Blue
+    '#D55E00',  # Vermilion
+    '#CC79A7',  # Reddish Purple
+    '#8B4513',  # Saddle Brown
+    '#32CD32',  # Lime Green
+    '#FF1493'   # Deep Pink
+]
+
+plot_acid_concentrations(acid_name=ACID, all_values=all_carbon_dioxide, knockout_dict=knockouts, custom_colors=colors)
+
+#proton#############
+
+ACID = 'proton'
+all_proton = getAcid('100_env_all_models', acid = ACID)
+akkermansia_proton = getAcid('akkermansia', acid = ACID)
+anaerostipes_proton = getAcid('anaerostipes', acid = ACID)
+bacteroidesFragilis_proton = getAcid('BacteroidesFragilis', acid = ACID)
+bacteroidesTheta_proton = getAcid('BacteroidesTheta', acid = ACID)
+bifidobacterium_proton = getAcid('Bifidobacterium', acid = ACID)
+blautia_proton = getAcid('Blautia', acid = ACID)
+clostridum_proton = getAcid('Clostridum', acid = ACID)
+faecalibacterium_proton = getAcid('Faecalibacterium', acid = ACID)
+lactobacillus_proton = getAcid('Lactobacillus', acid = ACID)
+prevotella_proton = getAcid('Prevotella', acid = ACID)
+roseburia_proton = getAcid('Roseburia', acid = ACID)
+
+acid = 'proton'
+
+knockouts = {
+    'Akkermansia': akkermansia_proton,
+    'Anaerostipes': anaerostipes_proton,
+    'BacteroidesFragilis': bacteroidesFragilis_proton,
+    'BacteroidesTheta': bacteroidesTheta_proton,
+    'Bifidobacterium': bifidobacterium_proton,
+    'Blautia': blautia_proton,
+    'Clostridium': clostridum_proton,
+    'Faecalibacterium': faecalibacterium_proton,
+    'Lactobacillus': lactobacillus_proton,
+    'Prevotella': prevotella_proton ,
+    'Roseburia': roseburia_proton ,
+}
+
+colors = [
+    '#A9A9A9',  # Gray for full
+    '#000000',  # Black
+    '#E69F00',  # Orange
+    '#56B4E9',  # Sky Blue
+    '#009E73',  # Bluish Green
+    '#F0E442',  # Yellow
+    '#0072B2',  # Blue
+    '#D55E00',  # Vermilion
+    '#CC79A7',  # Reddish Purple
+    '#8B4513',  # Saddle Brown
+    '#32CD32',  # Lime Green
+    '#FF1493'   # Deep Pink
+]
+
+plot_acid_concentrations(acid_name=ACID, all_values=all_proton, knockout_dict=knockouts, custom_colors=colors)
+
+
+
+
+
+#hydrogen#############
+
+ACID = 'hydrogen'
+all_hydrogen = getAcid('100_env_all_models', acid = ACID)
+akkermansia_hydrogen = getAcid('akkermansia', acid = ACID)
+anaerostipes_hydrogen = getAcid('anaerostipes', acid = ACID)
+bacteroidesFragilis_hydrogen = getAcid('BacteroidesFragilis', acid = ACID)
+bacteroidesTheta_hydrogen = getAcid('BacteroidesTheta', acid = ACID)
+bifidobacterium_hydrogen = getAcid('Bifidobacterium', acid = ACID)
+blautia_hydrogen = getAcid('Blautia', acid = ACID)
+clostridum_hydrogen = getAcid('Clostridum', acid = ACID)
+faecalibacterium_hydrogen = getAcid('Faecalibacterium', acid = ACID)
+lactobacillus_hydrogen = getAcid('Lactobacillus', acid = ACID)
+prevotella_hydrogen = getAcid('Prevotella', acid = ACID)
+roseburia_hydrogen = getAcid('Roseburia', acid = ACID)
+
+acid = 'hydrogen'
+
+knockouts = {
+    'Akkermansia': akkermansia_hydrogen,
+    'Anaerostipes': anaerostipes_hydrogen,
+    'BacteroidesFragilis': bacteroidesFragilis_hydrogen,
+    'BacteroidesTheta': bacteroidesTheta_hydrogen,
+    'Bifidobacterium': bifidobacterium_hydrogen,
+    'Blautia': blautia_hydrogen,
+    'Clostridium': clostridum_hydrogen,
+    'Faecalibacterium': faecalibacterium_hydrogen,
+    'Lactobacillus': lactobacillus_hydrogen,
+    'Prevotella': prevotella_hydrogen ,
+    'Roseburia': roseburia_hydrogen ,
+}
+
+colors = [
+    '#A9A9A9',  # Gray for full
+    '#000000',  # Black
+    '#E69F00',  # Orange
+    '#56B4E9',  # Sky Blue
+    '#009E73',  # Bluish Green
+    '#F0E442',  # Yellow
+    '#0072B2',  # Blue
+    '#D55E00',  # Vermilion
+    '#CC79A7',  # Reddish Purple
+    '#8B4513',  # Saddle Brown
+    '#32CD32',  # Lime Green
+    '#FF1493'   # Deep Pink
+]
+
+plot_acid_concentrations(acid_name=ACID, all_values=all_hydrogen, knockout_dict=knockouts, custom_colors=colors)
+
+#ammonium#############
+
+ACID = 'ammonium'
+all_ammonium = getAcid('100_env_all_models', acid = ACID)
+akkermansia_ammonium = getAcid('akkermansia', acid = ACID)
+anaerostipes_ammonium = getAcid('anaerostipes', acid = ACID)
+bacteroidesFragilis_ammonium = getAcid('BacteroidesFragilis', acid = ACID)
+bacteroidesTheta_ammonium = getAcid('BacteroidesTheta', acid = ACID)
+bifidobacterium_ammonium = getAcid('Bifidobacterium', acid = ACID)
+blautia_ammonium = getAcid('Blautia', acid = ACID)
+clostridum_ammonium = getAcid('Clostridum', acid = ACID)
+faecalibacterium_ammonium = getAcid('Faecalibacterium', acid = ACID)
+lactobacillus_ammonium = getAcid('Lactobacillus', acid = ACID)
+prevotella_ammonium = getAcid('Prevotella', acid = ACID)
+roseburia_ammonium = getAcid('Roseburia', acid = ACID)
+
+acid = 'ammonium'
+
+knockouts = {
+    'Akkermansia': akkermansia_ammonium,
+    'Anaerostipes': anaerostipes_ammonium,
+    'BacteroidesFragilis': bacteroidesFragilis_ammonium,
+    'BacteroidesTheta': bacteroidesTheta_ammonium,
+    'Bifidobacterium': bifidobacterium_ammonium,
+    'Blautia': blautia_ammonium,
+    'Clostridium': clostridum_ammonium,
+    'Faecalibacterium': faecalibacterium_ammonium,
+    'Lactobacillus': lactobacillus_ammonium,
+    'Prevotella': prevotella_ammonium ,
+    'Roseburia': roseburia_ammonium ,
+}
+
+colors = [
+    '#A9A9A9',  # Gray for full
+    '#000000',  # Black
+    '#E69F00',  # Orange
+    '#56B4E9',  # Sky Blue
+    '#009E73',  # Bluish Green
+    '#F0E442',  # Yellow
+    '#0072B2',  # Blue
+    '#D55E00',  # Vermilion
+    '#CC79A7',  # Reddish Purple
+    '#8B4513',  # Saddle Brown
+    '#32CD32',  # Lime Green
+    '#FF1493'   # Deep Pink
+]
+
+plot_acid_concentrations(acid_name=ACID, all_values=all_ammonium, knockout_dict=knockouts, custom_colors=colors)
+
