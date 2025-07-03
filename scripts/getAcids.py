@@ -53,7 +53,7 @@ def getAcid(folder, acid ='acetate', max_v = 16):
 
 
 
-def plot_acid_concentrations(acid_name, all_values, knockout_dict, custom_colors):
+def plot_acid_concentrations(acid_name, all_values, knockout_dict, custom_colors, filePath = None):
     """
     Plots final concentration of a given acid across all knockouts vs full community.
 
@@ -107,6 +107,8 @@ def plot_acid_concentrations(acid_name, all_values, knockout_dict, custom_colors
     plt.title(f'{acid_name.capitalize()} Concentration Across Knockouts', fontsize=12)
     plt.grid(axis='y', linestyle='--', linewidth=0.5, alpha=0.6)
     plt.tight_layout()
+    if filePath is not None:
+        plt.savefig(filePath, transparent =True, dpi =600)
     plt.show()
 
 
@@ -173,7 +175,8 @@ colors = [
     '#FF1493'   # Deep Pink
 ]
 
-plot_acid_concentrations(acid_name=ACID, all_values=all_acetate, knockout_dict=knockouts, custom_colors=colors)
+plot_acid_concentrations(acid_name=ACID, all_values=all_acetate, knockout_dict=knockouts, custom_colors=colors,
+                         filePath = os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', ACID + '.png'))
 
 
 #butyrate#############
@@ -223,7 +226,8 @@ colors = [
     '#FF1493'   # Deep Pink
 ]
 
-plot_acid_concentrations(acid_name=ACID, all_values=all_butyrate, knockout_dict=knockouts, custom_colors=colors)
+plot_acid_concentrations(acid_name=ACID, all_values=all_butyrate, knockout_dict=knockouts, custom_colors=colors,
+                         filePath = os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', ACID + '.png'))
 
 
 #formate#############
@@ -273,7 +277,8 @@ colors = [
     '#FF1493'   # Deep Pink
 ]
 
-plot_acid_concentrations(acid_name=ACID, all_values=all_formate, knockout_dict=knockouts, custom_colors=colors)
+plot_acid_concentrations(acid_name=ACID, all_values=all_formate, knockout_dict=knockouts, custom_colors=colors,
+                         filePath = os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', ACID + '.png'))
 
 #fumarate#############
 
@@ -322,7 +327,8 @@ colors = [
     '#FF1493'   # Deep Pink
 ]
 
-plot_acid_concentrations(acid_name=ACID, all_values=all_fumarate, knockout_dict=knockouts, custom_colors=colors)
+plot_acid_concentrations(acid_name=ACID, all_values=all_fumarate, knockout_dict=knockouts, custom_colors=colors,
+                         filePath = os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', ACID + '.png'))
 
 #propionate#############
 
@@ -371,7 +377,8 @@ colors = [
     '#FF1493'   # Deep Pink
 ]
 
-plot_acid_concentrations(acid_name=ACID, all_values=all_propionate, knockout_dict=knockouts, custom_colors=colors)
+plot_acid_concentrations(acid_name=ACID, all_values=all_propionate, knockout_dict=knockouts, custom_colors=colors,
+                         filePath = os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', ACID + '.png'))
 
 #######################
 acid = 'lactate_total'
@@ -444,4 +451,5 @@ colors = [
 ]
 
 # Plot it
-plot_acid_concentrations(acid_name=acid, all_values=all_lactate, knockout_dict=knockouts, custom_colors=colors)
+plot_acid_concentrations(acid_name=ACID, all_values=all_lactate, knockout_dict=knockouts, custom_colors=colors,
+                         filePath = os.path.join(Path(os.getcwd()).parents[0], 'files', 'Figures', ACID + '.png'))
